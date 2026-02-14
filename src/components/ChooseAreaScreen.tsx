@@ -19,7 +19,7 @@ const ChooseAreaScreen = ({ onStart }: ChooseAreaScreenProps) => {
         <div className="w-3 h-3 rounded-full bg-primary mx-auto animate-breathe" />
 
         <h1 className="text-3xl font-heading font-bold text-foreground tracking-tight">
-          Reset One Small Area
+          Environment Optimization Exercise
         </h1>
 
         <p className="text-lg text-muted-foreground leading-relaxed">
@@ -48,7 +48,7 @@ const ChooseAreaScreen = ({ onStart }: ChooseAreaScreenProps) => {
           className="w-full py-6 text-lg font-heading font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all"
           size="lg"
         >
-          Start 5-Minute Reset
+          Start 5-Minute Exercise
         </Button>
       </div>
     </div>

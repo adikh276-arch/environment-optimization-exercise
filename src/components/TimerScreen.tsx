@@ -66,6 +66,7 @@ const TimerScreen = ({ onComplete }: TimerScreenProps) => {
         <h1 className="text-3xl font-heading font-bold text-foreground">
           5-Minute Reset
         </h1>
+        <p className="text-sm text-muted-foreground -mt-4">Environment Optimization Exercise</p>
 
         <div className="bg-card rounded-2xl p-6 shadow-sm border border-border space-y-4">
           <p className="text-muted-foreground text-left leading-relaxed text-sm">
