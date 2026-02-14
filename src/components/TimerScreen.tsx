@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Pause, RotateCcw, Volume2, VolumeX } from "lucide-react";
+import { Play, Pause, RotateCcw, Volume2, VolumeX, CheckCircle2 } from "lucide-react";
 
 interface TimerScreenProps {
   onComplete: () => void;
@@ -60,15 +60,30 @@ const TimerScreen = ({ onComplete }: TimerScreenProps) => {
   const circumference = 2 * Math.PI * 88;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
+  const handleFinishEarly = () => {
+    setIsRunning(false);
+    playChime();
+    onComplete();
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-6 py-12 animate-fade-in">
-      <div className="max-w-md w-full text-center space-y-8">
-        <h1 className="text-3xl font-heading font-bold text-foreground">
-          5-Minute Reset
-        </h1>
-        <p className="text-sm text-muted-foreground -mt-4">Environment Optimization Exercise</p>
+      <div className="max-w-md w-full text-center space-y-6">
+        {/* Step indicator */}
+        <div className="flex items-center justify-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-primary/40" />
+          <div className="w-3 h-3 rounded-full bg-primary shadow-md" />
+          <div className="w-2 h-2 rounded-full bg-primary/40" />
+        </div>
 
-        <div className="bg-card rounded-2xl p-6 shadow-sm border border-border space-y-4">
+        <div>
+          <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-1">Step 2 of 3</p>
+          <h1 className="text-3xl font-heading font-bold text-foreground">
+            5-Minute Reset
+          </h1>
+        </div>
+
+        <div className="bg-card rounded-2xl p-5 shadow-sm border border-border space-y-3">
           <p className="text-muted-foreground text-left leading-relaxed text-sm">
             For the next 5 minutes:
           </p>
@@ -92,17 +107,13 @@ const TimerScreen = ({ onComplete }: TimerScreenProps) => {
         <div className="relative w-48 h-48 mx-auto">
           <svg className="w-48 h-48 -rotate-90" viewBox="0 0 192 192">
             <circle
-              cx="96"
-              cy="96"
-              r="88"
+              cx="96" cy="96" r="88"
               fill="none"
               stroke="hsl(var(--muted))"
               strokeWidth="6"
             />
             <circle
-              cx="96"
-              cy="96"
-              r="88"
+              cx="96" cy="96" r="88"
               fill="none"
               stroke="hsl(var(--primary))"
               strokeWidth="6"
@@ -154,6 +165,17 @@ const TimerScreen = ({ onComplete }: TimerScreenProps) => {
         <p className="text-xs text-muted-foreground">
           {soundEnabled ? "Gentle chime when done" : "Sound off"}
         </p>
+
+        {/* Finish Early Button */}
+        <Button
+          variant="outline"
+          onClick={handleFinishEarly}
+          className="w-full py-5 text-base font-heading font-semibold rounded-xl border-primary/30 text-primary hover:bg-primary/10 transition-all gap-2"
+          size="lg"
+        >
+          <CheckCircle2 className="w-5 h-5" />
+          I'm Done — Continue
+        </Button>
       </div>
     </div>
   );
