@@ -1,0 +1,30 @@
+# node_modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# build/dist output
+dist/
+build/
+
+# git files
+.git/
+.gitignore
+
+# env files
+.env
+.env.local
+.env.*.local
+
+# logs
+*.log
+logs/
+
+# editor/IDE files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
